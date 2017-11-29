@@ -1,5 +1,4 @@
-require 'game_pieces'
-require 'game_board_squares'
+Dir["/*.rb"].each {|file| require file }
 
 module Chess
   class Player
