@@ -1,7 +1,13 @@
-Dir["/*.rb"].each {|file| require file }
+require_relative 'game_pieces.rb'
+require_relative 'game_board_squares.rb'
 
 module Chess
+  include GameBoardSquares
+  include GamePieces
+
   class Player
+    attr_accessor :player_name, :player_pieces
+
     def initialize(player_name)
       @player_name = player_name
       @player_pieces = create_pieces
@@ -9,7 +15,7 @@ module Chess
 
     def create_pieces
       pieces = []
-      GAME_PIECES.each do |piece|
+      Chess::GAME_PIECES.each do |piece|
         pieces << GamePiece.new(piece)
       end
       pieces
@@ -17,13 +23,17 @@ module Chess
   end
 
   class GamePiece
+    attr_accessor :type, :moves
+
     def initialize(type)
       @type = type
-      @move_abilities = GamePieceAbility.new(type)
+      @moves = GamePieceAbility.new(type)
     end
   end
 
   class GamePieceAbility
+    attr_accessor :abilities
+
     def initialize(game_piece_type)
       @abilities = king_abilities if game_piece_type == 'king'
       @abilities = rook_abilities if game_piece_type == 'rook'
@@ -70,6 +80,8 @@ module Chess
   end
 
   class Board
+    attr_accessor :player_one_pieces, :player_two_pieces
+
     def initialize(player_one_pieces, player_two_pieces)
       @board_squares = GAME_BOARD_SQUARES
       place_game_pieces(player_one_pieces, player_two_pieces)
