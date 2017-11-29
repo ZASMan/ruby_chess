@@ -23,3 +23,24 @@ describe 'GamePiece' do
   	expect(king_piece.moves.abilities[:can_leap]).to eq false
   end
 end
+
+describe 'Board' do
+  let(:player_one) { Chess::Player.new('andy') }
+  let(:player_two) { Chess::Player.new('sid') }
+  let(:game_board) do
+    Chess::Board.new(
+  	  player_one.player_pieces,
+  	  player_two.player_pieces
+  	)
+  end
+
+  it 'creates an 8x8 square board' do
+  	player_one
+  	player_two
+  	game_board
+  	# Height
+  	expect(game_board.board_squares.length).to eq 8
+  	# Width
+  	expect(game_board[1].length).to eq 8
+  end
+end

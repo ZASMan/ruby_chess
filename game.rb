@@ -80,22 +80,22 @@ module Chess
   end
 
   class Board
-    attr_accessor :player_one_pieces, :player_two_pieces
+    attr_accessor :board_squares
 
     def initialize(player_one_pieces, player_two_pieces)
-      @board_squares = GAME_BOARD_SQUARES
+      @board_squares = Chess::GAME_BOARD_SQUARES
       place_game_pieces(player_one_pieces, player_two_pieces)
     end
 
-    def place_game_pieces
+    def place_game_pieces(player_one_pieces, player_two_pieces)
     end
   end
 
   class Game
     def intialize(player_one_name, player_two_name)
-      @player_one = Player.new(player_one_name)
-      @player_two = Player.new(player_two_name)
-      @board = Board.new(@player_one.player_pieces, @player_two.player_pieces)
+      @game_player_one = Player.new(player_one_name)
+      @game_player_two = Player.new(player_two_name)
+      @game_board = Board.new(@player_one.player_pieces, @player_two.player_pieces)
     end
   end
 end
