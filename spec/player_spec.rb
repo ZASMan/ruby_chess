@@ -1,5 +1,4 @@
-Dir["../*.rb"].each {|file| require file }
-
+require_relative '../game.rb'
 
 describe 'Player' do
   it 'can initialize a player with a name' do
