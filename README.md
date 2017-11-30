@@ -1,2 +1,2 @@
 # ruby_chess
-A command line ruby chess game.
+The goal of this is to create a command line chess game that can be played between two players. My goal is to test my knowledge as a programmer and ability to make a large and complex program in more or less pure Ruby while keeping the code modular and DRY. The final project should be a properly constrained chess game which prevents players from making illegal moves, and seralization to save the game at any time. I'll be using RSpec to stay consistent with test driven development along the way.
